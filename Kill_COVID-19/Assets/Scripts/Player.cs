@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UFrame;
 using UFrame.MiniGame;
 using UnityEngine;
 
@@ -10,12 +11,17 @@ namespace Game
 		public float dragSensitivity = 1f;
 		Transform cacheTrans;
 		Vector3 dragMoveTo;
+		VoidParamIntCDs multiCD;
 
+		public int cdVal = 500;
 		bool isFingerDown = false;
 
 		void Awake()
 		{
 			cacheTrans = transform;
+			multiCD = new VoidParamIntCDs();
+			multiCD.AddCD(cdVal, null, Callback_Spawn);
+			multiCD.Run();
 		}
 
 		void Update()
@@ -24,10 +30,14 @@ namespace Game
 			{
 				return;
 			}
+			////for(int i = 0; i < ; i++) 
+			//{
+			//	var buillet = ResourceManager.GetInstance().LoadGameObject("buillet");
+			//	buillet.transform.position = transform.position;
+			//	buillet.GetComponent<Bullet>().Active();
+			//}
+			multiCD.Tick((int)(1000 * Time.deltaTime));
 
-			var buillet = ResourceManager.GetInstance().LoadGameObject("buillet");
-			buillet.transform.position = transform.position;
-			buillet.GetComponent<Bullet>().Active();
 		}
 
 		void OnDrag(DragGesture gesture)
@@ -67,6 +77,24 @@ namespace Game
 		bool CouldDrag()
 		{
 			return true;
+		}
+
+		protected void Callback_Spawn(IntCD CD, IVoidParam spawnCarParam)
+		{
+			if (CD != null) 
+			{
+				CD.Reset();
+				CD.Run();
+			}
+
+			if (!isFingerDown)
+			{
+				return;
+			}
+
+			var buillet = ResourceManager.GetInstance().LoadGameObject("buillet");
+			buillet.transform.position = transform.position;
+			buillet.GetComponent<Bullet>().Active();
 		}
 	}
 
