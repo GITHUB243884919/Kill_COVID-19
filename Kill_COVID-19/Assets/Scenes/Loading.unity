@@ -221,8 +221,6 @@ GameObject:
   - component: {fileID: 1963451980}
   - component: {fileID: 1963451978}
   - component: {fileID: 1963451977}
-  - component: {fileID: 1963451981}
-  - component: {fileID: 1963451982}
   m_Layer: 0
   m_Name: GameRoot
   m_TagString: Untagged
@@ -313,39 +311,5 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: caf1f4aadc5478b40abbdff9b756334e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1963451981
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1963451974}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9d4079fabff2dd44389de920259f6c20, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tagForChildDirectedTreatment: -1
-  rewardADUnit: ca-app-pub-8848869982073315/1386116866
-  interstitialADUnit: 
-  isTestMode: 1
-  testDevices:
-  - BC3A75F13CC507180A2737580450DCF1
-  requestBtn: {fileID: 0}
-  stateTxt: {fileID: 0}
-  rewardTxt: {fileID: 0}
-  isInit: 0
---- !u!114 &1963451982
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1963451974}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 61b144d706fcfae47a6c9e2b526fd14e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
