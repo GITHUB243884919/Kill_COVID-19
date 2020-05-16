@@ -15,7 +15,7 @@ namespace Game
 
 		public int cdVal = 500;
 		bool isFingerDown = false;
-
+        //bool isDraging = false;
 		void Awake()
 		{
 			cacheTrans = transform;
@@ -46,35 +46,53 @@ namespace Game
 			{
 				if (gesture.DeltaMove.SqrMagnitude() > 0) 
 				{
-					//Vector2 screenSpaceMove = dragSensitivity * gesture.DeltaMove;
-					//Vector3 worldSpaceMove = screenSpaceMove.x * cacheTrans.right + screenSpaceMove.y * cacheTrans.up;
+                    //Vector2 screenSpaceMove = dragSensitivity * gesture.DeltaMove;
+                    //Vector3 worldSpaceMove = screenSpaceMove.x * cacheTrans.right + screenSpaceMove.y * cacheTrans.up;
 
-					//dragMoveTo.x += worldSpaceMove.x;
-					//dragMoveTo.z += worldSpaceMove.z;
+                    //dragMoveTo.x += worldSpaceMove.x;
+                    //dragMoveTo.z += worldSpaceMove.z;
 
-					//transform.position = dragMoveTo;
+                    //transform.position = dragMoveTo;
 
-					//Vector3 w = gesture.Position.x * cacheTrans.right + gesture.Position.y * cacheTrans.up;
-					//transform.position = new Vector3(w.x, 0, w.z);
+                    //Vector3 w = gesture.Position.x * cacheTrans.right + gesture.Position.y * cacheTrans.up;
+                    //transform.position = new Vector3(w.x, 0, w.z);
 
-					Ray ray = Camera.main.ScreenPointToRay(gesture.Position);
-					Vector3 groundPoint = UFrame.Math_F.GetIntersectWithLineAndGround(ray.origin, ray.direction);
-					transform.position = groundPoint;
-				}
-			}
+                    //Vector2 screenSpaceMove = gesture.DeltaMove;
+                    //Vector3 worldSpaceMove = screenSpaceMove.x * Camera.main.transform.right + screenSpaceMove.y * Camera.main.transform.up;
+                    //Debug.LogErrorFormat("{0}, {1}", gesture.DeltaMove, worldSpaceMove);
+                    //transform.position += worldSpaceMove;
+
+                    var v1 = GetScreenPointInGround(gesture.Position);
+                    var v2 = GetScreenPointInGround(gesture.Position - gesture.DeltaMove);
+                    transform.position += v1 - v2;
+                    //               Ray ray = Camera.main.ScreenPointToRay(gesture.Position);
+                    //Vector3 groundPoint = UFrame.Math_F.GetIntersectWithLineAndGround(ray.origin, ray.direction);
+                    //transform.position = groundPoint;
+                }
+            }
+            //else if (gesture.State == GestureRecognitionState.Started)
+            //{
+            //    isDraging = true;
+            //}
+            //else if ()
+            //{
+            //    isDraging = false;
+            //}
+
+
 		}
 
-		void OnFingerUp()
-		{
-			isFingerDown = false;
-		}
+        void OnFingerUp()
+        {
+            isFingerDown = false;
+        }
 
-		void OnFingerDown()
-		{
-			isFingerDown = true;
-		}
+        void OnFingerDown()
+        {
+            isFingerDown = true;
+        }
 
-		bool CouldDrag()
+        bool CouldDrag()
 		{
 			return true;
 		}
@@ -96,6 +114,16 @@ namespace Game
 			buillet.transform.position = transform.position;
 			buillet.GetComponent<Bullet>().Active();
 		}
-	}
+
+        Vector3 GetScreenPointInGround(Vector3 pos)
+        {
+            Ray ray = Camera.main.ScreenPointToRay(pos);
+            Vector3 groundPoint = UFrame.Math_F.GetIntersectWithLineAndGround(ray.origin, ray.direction);
+//#if UNITY_EDITOR
+//            GameObject.CreatePrimitive(PrimitiveType.Capsule).transform.position = groundPoint;
+//#endif
+            return groundPoint;
+        }
+    }
 
 }

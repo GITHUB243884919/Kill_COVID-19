@@ -8,18 +8,26 @@ namespace Game
 {
 	public class EnemyManager : MonoBehaviour
 	{
-		VoidParamIntCDs multiCD;
+        public int spawnCD = 1000;
+
+        VoidParamIntCDs multiCD;
 		Vector3 leftTop;
 		Vector3 rightBottom;
+
+
 
 		void Start()
 		{
 			leftTop = GetScreenPointInGround(new Vector3(0, Screen.height, 0));
 			rightBottom = GetScreenPointInGround(new Vector3(Screen.width, Screen.height * 0.7f, 0));
-			multiCD = new VoidParamIntCDs();
-			multiCD.AddCD(1000, null, Callback_Spawn);
+            Debug.LogFormat("min_x = {0}, max_x = {1}", leftTop.x, rightBottom.x);
+            Debug.LogFormat("min_z = {0}, max_z = {1}", rightBottom.z, leftTop.z);
+
+            multiCD = new VoidParamIntCDs();
+			multiCD.AddCD(spawnCD, null, Callback_Spawn);
 			multiCD.Run();
-		}
+            //Callback_Spawn(null, null);
+        }
 
 
 		void Update()
@@ -29,14 +37,25 @@ namespace Game
 
 		protected void Callback_Spawn(IntCD CD, IVoidParam spawnCarParam)
 		{
-			var enemy = ResourceManager.GetInstance().LoadGameObject("enemy");
-			Vector3 pos = Vector3.zero;
-			pos.x = UnityEngine.Random.Range(leftTop.x, rightBottom.x);
-			pos.z = UnityEngine.Random.Range(rightBottom.z, leftTop.z);
-			enemy.transform.position = pos;
-			enemy.GetComponent<Enemy>().Active();
-
-			if (CD != null) 
+            {
+                var enemy = ResourceManager.GetInstance().LoadGameObject("enemy");
+                Vector3 pos = Vector3.zero;
+                pos.x = UnityEngine.Random.Range(leftTop.x, rightBottom.x);
+                pos.z = UnityEngine.Random.Range(rightBottom.z, leftTop.z);
+                enemy.transform.position = pos;
+                //enemy.GetComponent<Enemy>().Active();
+                enemy.GetComponent<Enemy>().Active();
+            }
+            {
+                var enemy = ResourceManager.GetInstance().LoadGameObject("enemy_2");
+                Vector3 pos = Vector3.zero;
+                pos.x = UnityEngine.Random.Range(leftTop.x, rightBottom.x);
+                pos.z = UnityEngine.Random.Range(rightBottom.z, leftTop.z);
+                enemy.transform.position = pos;
+                //enemy.GetComponent<Enemy>().Active();
+                enemy.GetComponent<Enemy_2>().Active();
+            }
+            if (CD != null) 
 			{
 				CD.Reset();
 				CD.Run();

@@ -29,7 +29,7 @@ namespace Game
 			//Debug.LogFormat("OnCollisionEnter {0}", collision.gameObject.tag);
 			if (collision.gameObject.CompareTag("Buillet")) 
 			{
-				Debug.LogFormat("OnCollisionEnter {0}", collision.gameObject.tag);
+				//Debug.LogFormat("OnCollisionEnter {0}", collision.gameObject.tag);
 				isActive = false;
 				GameObject.Destroy(gameObject);
 				GameObject.Destroy(collision.gameObject);

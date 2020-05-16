@@ -118,9 +118,8 @@ public class LoadingMgr : MonoBehaviour
 
     void Start()
     {
-        //InitThridPart();
-        //PageMgr.ShowPage<UILevel>();
-        PageMgr.ShowPage<UILevel2>();
+
+        SceneMgr.Inst.LoadSceneAsync("Stage", null, null);
     }
 
     protected void InitPlayerData()
