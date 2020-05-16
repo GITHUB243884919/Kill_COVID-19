@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UFrame;
 using UFrame.MiniGame;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 namespace Game
 {
@@ -18,7 +19,8 @@ namespace Game
         //bool isDraging = false;
 		void Awake()
 		{
-			cacheTrans = transform;
+            FingerGestures.GlobalTouchFilter = IsFointOnUI;
+            cacheTrans = transform;
 			multiCD = new VoidParamIntCDs();
 			multiCD.AddCD(cdVal, null, Callback_Spawn);
 			multiCD.Run();
@@ -40,46 +42,38 @@ namespace Game
 
 		}
 
-		void OnDrag(DragGesture gesture)
+        bool IsFointOnUI(int fingerIndex, Vector2 position)
+        {
+            if (Input.GetMouseButtonDown(0) || (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began))
+            {
+                //屏幕触摸触发
+                if (EventSystem.current.IsPointerOverGameObject())
+                {
+                    return false;
+                }
+
+                return true;
+            }
+            return false;
+        }
+
+        void OnDrag(DragGesture gesture)
 		{
 			if (gesture.State == GestureRecognitionState.InProgress && CouldDrag()) 
 			{
 				if (gesture.DeltaMove.SqrMagnitude() > 0) 
 				{
-                    //Vector2 screenSpaceMove = dragSensitivity * gesture.DeltaMove;
-                    //Vector3 worldSpaceMove = screenSpaceMove.x * cacheTrans.right + screenSpaceMove.y * cacheTrans.up;
-
-                    //dragMoveTo.x += worldSpaceMove.x;
-                    //dragMoveTo.z += worldSpaceMove.z;
-
-                    //transform.position = dragMoveTo;
-
-                    //Vector3 w = gesture.Position.x * cacheTrans.right + gesture.Position.y * cacheTrans.up;
-                    //transform.position = new Vector3(w.x, 0, w.z);
-
-                    //Vector2 screenSpaceMove = gesture.DeltaMove;
-                    //Vector3 worldSpaceMove = screenSpaceMove.x * Camera.main.transform.right + screenSpaceMove.y * Camera.main.transform.up;
-                    //Debug.LogErrorFormat("{0}, {1}", gesture.DeltaMove, worldSpaceMove);
-                    //transform.position += worldSpaceMove;
-
+                    //移动鼠标移动的delta
                     var v1 = GetScreenPointInGround(gesture.Position);
                     var v2 = GetScreenPointInGround(gesture.Position - gesture.DeltaMove);
                     transform.position += v1 - v2;
-                    //               Ray ray = Camera.main.ScreenPointToRay(gesture.Position);
+                    
+                    //移动到鼠标
+                    //Ray ray = Camera.main.ScreenPointToRay(gesture.Position);
                     //Vector3 groundPoint = UFrame.Math_F.GetIntersectWithLineAndGround(ray.origin, ray.direction);
                     //transform.position = groundPoint;
                 }
             }
-            //else if (gesture.State == GestureRecognitionState.Started)
-            //{
-            //    isDraging = true;
-            //}
-            //else if ()
-            //{
-            //    isDraging = false;
-            //}
-
-
 		}
 
         void OnFingerUp()
@@ -124,6 +118,53 @@ namespace Game
 //#endif
             return groundPoint;
         }
+
+        public void Skill_1()
+        {
+            //一排子弹
+            Debug.LogError("skill1");
+            int count = 5;
+            var center = cacheTrans.position;
+            float space = 1f;
+            Vector3 start = center;
+            start.x = center.x - count / 2 * space;
+            Debug.LogErrorFormat("{0} {1}", center, start);
+            for (int i = 0; i < count; i++)
+            {
+                var buillet = ResourceManager.GetInstance().LoadGameObject("buillet");
+                var pos = start + Vector3.right * space * i;
+                Debug.LogErrorFormat("{0}", pos);
+                buillet.transform.position = pos;
+                buillet.GetComponent<Bullet>().Active();
+            }
+
+        }
+
+        public void Skill_2()
+        {
+            //散弹
+            Debug.LogError("skill2");
+
+            float r = 3f;
+            Vector3 dir = Vector3.zero;
+            float startAngle = 30f;
+            float endAngle = 90 + (90 - 30);
+            int count = 10;
+            float deltaAnagle = (endAngle - startAngle) / count;
+            for (int i = 0; i < count; i++)
+            {
+                dir.x = Mathf.Cos(Math_F.AngleToRadian(startAngle + i * deltaAnagle));
+                dir.z = Mathf.Sin(Math_F.AngleToRadian(startAngle + i * deltaAnagle));
+                var buillet = ResourceManager.GetInstance().LoadGameObject("buillet_2");
+                buillet.GetComponent<Bullet_2>().dir = dir;
+                dir *= r;
+                buillet.transform.position = dir + cacheTrans.position;
+                buillet.GetComponent<Bullet_2>().Active();
+            }
+
+
+        }
+
     }
 
 }

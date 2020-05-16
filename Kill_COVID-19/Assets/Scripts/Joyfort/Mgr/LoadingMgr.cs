@@ -120,6 +120,7 @@ public class LoadingMgr : MonoBehaviour
     {
 
         SceneMgr.Inst.LoadSceneAsync("Stage", null, null);
+        PageMgr.ShowPage<UIStage>();
     }
 
     protected void InitPlayerData()

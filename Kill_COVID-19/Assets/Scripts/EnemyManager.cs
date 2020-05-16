@@ -20,8 +20,8 @@ namespace Game
 		{
 			leftTop = GetScreenPointInGround(new Vector3(0, Screen.height, 0));
 			rightBottom = GetScreenPointInGround(new Vector3(Screen.width, Screen.height * 0.7f, 0));
-            Debug.LogFormat("min_x = {0}, max_x = {1}", leftTop.x, rightBottom.x);
-            Debug.LogFormat("min_z = {0}, max_z = {1}", rightBottom.z, leftTop.z);
+            Debug.LogErrorFormat("min_x = {0}, max_x = {1}", leftTop.x, rightBottom.x);
+            Debug.LogErrorFormat("min_z = {0}, max_z = {1}", rightBottom.z, leftTop.z);
 
             multiCD = new VoidParamIntCDs();
 			multiCD.AddCD(spawnCD, null, Callback_Spawn);
