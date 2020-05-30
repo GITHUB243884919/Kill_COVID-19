@@ -16,11 +16,22 @@ public class RepeatingBackground : MonoBehaviour
         {
             RepositionBackground();
         }
-    }
+
+  //      Debug.LogErrorFormat("{0}, {1}", transform.position, verticalSize);
+		////if (transform.position.z > verticalSize) //if sprite goes down below the viewport move the object up above the viewport
+		////{
+		////	RepositionBackground();
+		////}
+	}
 
     void RepositionBackground() 
     {
         Vector2 groundOffSet = new Vector2(0, verticalSize * 2f);
         transform.position = (Vector2)transform.position + groundOffSet;
+        //Vector3 groundOffSet = Vector3.forward;
+        //groundOffSet.x = transform.position.x;
+        //groundOffSet.y = transform.position.y;
+        //groundOffSet.z = verticalSize * 2f;
+        //transform.position = groundOffSet;
     }
 }

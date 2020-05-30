@@ -38,7 +38,7 @@ public class UIStage : UIPage
     {
         if (player == null)
         {
-            player = GameObject.Find("Player").GetComponent<Player>();
+            player = GameObject.Find("Player").GetComponentInChildren<Player>();
         }
         player.Skill_1();
     }
@@ -47,7 +47,7 @@ public class UIStage : UIPage
     {
         if (player == null)
         {
-            player = GameObject.Find("Player").GetComponent<Player>();
+            player = GameObject.Find("Player").GetComponentInChildren<Player>();
         }
         player.Skill_2();
     }

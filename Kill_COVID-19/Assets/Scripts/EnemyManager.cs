@@ -38,7 +38,8 @@ namespace Game
 		protected void Callback_Spawn(IntCD CD, IVoidParam spawnCarParam)
 		{
             {
-                var enemy = ResourceManager.GetInstance().LoadGameObject("enemy");
+                //var enemy = ResourceManager.GetInstance().LoadGameObject("enemy");
+                var enemy = ResourceManager.GetInstance().LoadGameObject("EnemyDropDown");
                 Vector3 pos = Vector3.zero;
                 pos.x = UnityEngine.Random.Range(leftTop.x, rightBottom.x);
                 pos.z = UnityEngine.Random.Range(rightBottom.z, leftTop.z);
@@ -47,7 +48,8 @@ namespace Game
                 enemy.GetComponent<Enemy>().Active();
             }
             {
-                var enemy = ResourceManager.GetInstance().LoadGameObject("enemy_2");
+                //var enemy = ResourceManager.GetInstance().LoadGameObject("enemy_2");
+                var enemy = ResourceManager.GetInstance().LoadGameObject("EnemyWander");
                 Vector3 pos = Vector3.zero;
                 pos.x = UnityEngine.Random.Range(leftTop.x, rightBottom.x);
                 pos.z = UnityEngine.Random.Range(rightBottom.z, leftTop.z);

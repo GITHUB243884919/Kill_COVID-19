@@ -22,7 +22,7 @@ namespace Game
             FingerGestures.GlobalTouchFilter = IsFointOnUI;
             cacheTrans = transform;
 			multiCD = new VoidParamIntCDs();
-			multiCD.AddCD(cdVal, null, Callback_Spawn);
+			multiCD.AddCD(cdVal, null, Callback_SpawnNormalBullet);
 			multiCD.Run();
 		}
 
@@ -91,7 +91,7 @@ namespace Game
 			return true;
 		}
 
-		protected void Callback_Spawn(IntCD CD, IVoidParam spawnCarParam)
+		protected void Callback_SpawnNormalBullet(IntCD CD, IVoidParam spawnCarParam)
 		{
 			if (CD != null) 
 			{

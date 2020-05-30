@@ -244,7 +244,7 @@ PlayerSettings:
   AndroidTargetArchitectures: 3
   AndroidSplashScreenScale: 0
   androidSplashScreen: {fileID: 0}
-  AndroidKeystoreName: D:/fzy/HillGame/Kill_COVID-19/killcovid19_user.keystore
+  AndroidKeystoreName: E:/Fzy/u3dproject/HillGame/Kill_COVID-19/killcovid19_user.keystore
   AndroidKeyaliasName: 123456
   AndroidBuildApkPerCpuArchitecture: 0
   AndroidTVCompatibility: 1
