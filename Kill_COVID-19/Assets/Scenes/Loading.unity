@@ -216,11 +216,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1963451975}
-  - component: {fileID: 1963451976}
   - component: {fileID: 1963451979}
-  - component: {fileID: 1963451980}
   - component: {fileID: 1963451978}
   - component: {fileID: 1963451977}
+  - component: {fileID: 1963451976}
   m_Layer: 0
   m_Name: GameRoot
   m_TagString: Untagged
@@ -251,16 +250,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 1963451974}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 82b49e2471a60b4409056c713f08254b, type: 3}
+  m_Script: {fileID: 11500000, guid: a9958a09d2db9174e85aab43a0d6937c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   isUsedData: 0
   isExceptionQuit: 0
   isShowException: 0
   language: 6
-  isUsedlanguage: 0
+  isUsedlanguage: 1
   runTimeLoaderType: 1
-  ExtendLoadGroupNum: -1
+  ExtendLoadGroupNum: 1
   debugCamera: 0
   isRunning: 0
 --- !u!114 &1963451977
@@ -301,15 +300,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fps: 0
---- !u!114 &1963451980
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1963451974}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: caf1f4aadc5478b40abbdff9b756334e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

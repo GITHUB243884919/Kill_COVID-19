@@ -8,9 +8,9 @@
 
 
 using UnityEngine;
-using UFrame.EntityFloat;
+using HillUFrame.EntityFloat;
 
-namespace UFrame.BehaviourFloat
+namespace HillUFrame.BehaviourFloat
 {
     public abstract class BehaviourBase : TickBase
     {

@@ -12,7 +12,7 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using Object = UnityEngine.Object;
-using UFrame.MiniGame;
+using HillUFrame.MiniGame;
 
 public class PageMgr{
 

@@ -7,7 +7,7 @@
 ********************************************************************/
 
 
-namespace UFrame.EntityFloat
+namespace HillUFrame.EntityFloat
 {
     public class EntityMovable : EntityGameObject
     {

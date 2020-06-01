@@ -11,7 +11,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace UFrame.Common
+namespace HillUFrame.Common
 {
     public class SingletonMonoSelfAdd<T> : UnityEngine.MonoBehaviour
         where T : UnityEngine.MonoBehaviour

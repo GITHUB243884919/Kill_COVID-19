@@ -1,6 +1,6 @@
-﻿using UFrame.MessageCenter;
+﻿using HillUFrame.MessageCenter;
 
-namespace UFrame
+namespace HillUFrame
 {
     public class WanderArrived : Message
     {

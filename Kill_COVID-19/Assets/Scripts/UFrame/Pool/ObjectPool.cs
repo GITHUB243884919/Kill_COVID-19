@@ -11,7 +11,7 @@ using System;
 using System.Collections.Generic;
 using Game.MessageCenter;
 
-namespace UFrame
+namespace HillUFrame
 {
     public interface IObjectPoolable
     {

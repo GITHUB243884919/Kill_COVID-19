@@ -1,28 +1,28 @@
 ﻿using Game;
 using Game.MessageCenter;
-using UFrame.Logger;
+using HillUFrame.Logger;
 using System;
-using UFrame;
+using HillUFrame;
 using UnityEngine;
 using Game.GlobalData;
 
 namespace Game
 {
-    /// <summary>
-    /// 游戏运行模式
-    /// </summary>
-    public enum RunTimeLoaderType
-    {
-        /// <summary>
-        /// 游戏模式
-        /// </summary>
-        Game = 1,
+    ///// <summary>
+    ///// 游戏运行模式
+    ///// </summary>
+    //public enum RunTimeLoaderType
+    //{
+    //    /// <summary>
+    //    /// 游戏模式
+    //    /// </summary>
+    //    Game = 1,
 
-        /// <summary>
-        /// 编辑模式
-        /// </summary>
-        Editor = 2,
-    }
+    //    /// <summary>
+    //    /// 编辑模式
+    //    /// </summary>
+    //    Editor = 2,
+    //}
 }
 
 public class LoadingMgr : MonoBehaviour

@@ -9,7 +9,7 @@
 
 using UnityEngine;
 
-namespace UFrame
+namespace HillUFrame
 {
     public abstract class MonoTickBase : MonoBehaviour
     {

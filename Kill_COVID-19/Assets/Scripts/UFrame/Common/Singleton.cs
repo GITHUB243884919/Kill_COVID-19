@@ -7,7 +7,7 @@
 ********************************************************************/
 
 
-namespace UFrame.Common
+namespace HillUFrame.Common
 {
     public interface ISingleton
     {

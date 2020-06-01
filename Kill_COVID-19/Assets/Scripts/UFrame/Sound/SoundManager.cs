@@ -9,11 +9,11 @@
 
 using System.Collections;
 using System.Collections.Generic;
-using UFrame.Common;
+using HillUFrame.Common;
 using UnityEngine;
 using UnityEngine.Networking;
 
-namespace UFrame.MiniGame
+namespace HillUFrame.MiniGame
 {
     public class SoundManager : SingletonMono<SoundManager>
     {

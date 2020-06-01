@@ -12,7 +12,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Numerics;
 
-namespace UFrame
+namespace HillUFrame
 {
     /// <summary>
     /// 实现“采矿大亨”这款游戏的大数据显示规则

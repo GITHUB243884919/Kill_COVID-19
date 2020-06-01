@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using UFrame.Logger;
+using HillUFrame.Logger;
 using UnityEngine;
 
 namespace Game.GlobalData

@@ -7,7 +7,7 @@
 ********************************************************************/
 
 
-namespace UFrame.MessageCenter
+namespace HillUFrame.MessageCenter
 {
     public abstract class Message : IObjectPoolable
     {

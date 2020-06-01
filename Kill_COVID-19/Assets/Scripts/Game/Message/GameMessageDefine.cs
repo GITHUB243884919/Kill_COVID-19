@@ -16,6 +16,8 @@ namespace Game.MessageCenter
 
         UIMessage_RemoveFromTick,
 
+        LoadSceneFinished,
+
         GenLevel,
 
         RewardADLoadSuccess,

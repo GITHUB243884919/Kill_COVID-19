@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UFrame.MiniGame;
+using HillUFrame.MiniGame;
 using Game.GlobalData;
 
 namespace Game

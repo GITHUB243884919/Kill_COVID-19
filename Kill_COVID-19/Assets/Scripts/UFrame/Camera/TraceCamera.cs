@@ -8,11 +8,11 @@
 
 
 using UnityEngine;
-using UFrame.Common;
-using UFrame.Logger;
+using HillUFrame.Common;
+using HillUFrame.Logger;
 using System.Collections.Generic;
 
-namespace UFrame.OrthographicCamera
+namespace HillUFrame.OrthographicCamera
 {
     public class TraceCamera : SingletonMono<TraceCamera>
     {
@@ -39,7 +39,7 @@ namespace UFrame.OrthographicCamera
             }
             if (tracedTrans != null)
             {
-                if (tracedTrans.position == UFrame.Const.Invisible_Postion)
+                if (tracedTrans.position == HillUFrame.Const.Invisible_Postion)
                 {
                     if (!isModifiedOtherCtr)
                     {
@@ -99,7 +99,7 @@ namespace UFrame.OrthographicCamera
             Ray ray = cacheCam.ScreenPointToRay(screenCenter);
 
             //屏幕中心点，投影到地面的坐标
-            Vector3 groundPoint = UFrame.Math_F.GetIntersectWithLineAndGround(ray.origin, ray.direction);
+            Vector3 groundPoint = HillUFrame.Math_F.GetIntersectWithLineAndGround(ray.origin, ray.direction);
 
             //地面的坐标的差异就是相机偏移
             cachedTrans.position -= (groundPoint - point);

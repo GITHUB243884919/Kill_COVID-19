@@ -8,10 +8,10 @@
 
 
 using System;
-using UFrame.Common;
-using UFrame.MessageCenter;
+using HillUFrame.Common;
+using HillUFrame.MessageCenter;
 
-namespace UFrame
+namespace HillUFrame
 {
     public class MessageManager : Singleton<MessageManager>, ISingleton
     {
@@ -30,17 +30,17 @@ namespace UFrame
             gameMessageCenter.callbackNotFoundMessage = callback;
         }
 
-        public void Regist(int messageID, Action<UFrame.MessageCenter.Message> executor)
+        public void Regist(int messageID, Action<HillUFrame.MessageCenter.Message> executor)
         {
             gameMessageCenter.Regist(messageID, executor);
         }
 
-        public void UnRegist(int messageID, Action<UFrame.MessageCenter.Message> executor)
+        public void UnRegist(int messageID, Action<HillUFrame.MessageCenter.Message> executor)
         {
             gameMessageCenter.UnRegist(messageID, executor);
         }
 
-        public void Send(UFrame.MessageCenter.Message msg, bool immediately = true)
+        public void Send(HillUFrame.MessageCenter.Message msg, bool immediately = true)
         {
             gameMessageCenter.Send(msg, immediately);
         }

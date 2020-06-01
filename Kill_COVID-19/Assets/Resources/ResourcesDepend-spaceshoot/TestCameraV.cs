@@ -31,7 +31,7 @@ public class TestCameraV : MonoBehaviour
     Vector3 GetScreenPointInGround(Vector3 pos)
     {
         Ray ray = Camera.main.ScreenPointToRay(pos);
-        Vector3 groundPoint = UFrame.Math_F.GetIntersectWithLineAndGround(ray.origin, ray.direction);
+        Vector3 groundPoint = HillUFrame.Math_F.GetIntersectWithLineAndGround(ray.origin, ray.direction);
 #if UNITY_EDITOR
         GameObject.CreatePrimitive(PrimitiveType.Capsule).transform.position = groundPoint;
 #endif

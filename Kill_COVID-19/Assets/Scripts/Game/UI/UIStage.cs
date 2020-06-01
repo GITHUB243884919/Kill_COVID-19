@@ -1,15 +1,15 @@
 ﻿using Game;
 using Game.GlobalData;
 using Game.MessageCenter;
-using UFrame.Logger;
+using HillUFrame.Logger;
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using UFrame;
-using UFrame.MessageCenter;
+using HillUFrame;
+using HillUFrame.MessageCenter;
 using UnityEngine;
 using UnityEngine.UI;
-using UFrame.MiniGame;
+using HillUFrame.MiniGame;
 using UnityEngine.EventSystems;
 
 public class UIStage : UIPage

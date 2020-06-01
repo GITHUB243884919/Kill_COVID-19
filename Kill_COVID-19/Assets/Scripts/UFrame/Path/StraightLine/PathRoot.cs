@@ -12,7 +12,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace UFrame.Path.StraightLine
+namespace HillUFrame.Path.StraightLine
 {
     [Serializable]
     public class ScriptableObjectDictionary<TKey, TValue> : ScriptableObject

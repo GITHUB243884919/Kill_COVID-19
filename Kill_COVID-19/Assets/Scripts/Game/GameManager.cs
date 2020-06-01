@@ -10,12 +10,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UFrame.Common;
-using UFrame;
+using HillUFrame.Common;
+using HillUFrame;
 using Game.GlobalData;
 using Game.MessageCenter;
-using UFrame.MessageCenter;
-using UFrame.Logger;
+using HillUFrame.MessageCenter;
+using HillUFrame.Logger;
 using System;
 
 namespace Game
@@ -28,12 +28,17 @@ namespace Game
             //MessageManager不受暂停和停止限制
             MessageManager.GetInstance().Tick();
 
+            if (GameRoot.GetInstance().fsmGameLoad != null)
+            {
+                GameRoot.GetInstance().fsmGameLoad.Tick(deltaTimeMS);
+            }
+
             if (!this.CouldRun())
             {
                 return;
             }
 
-            GameModuleManager.GetInstance().Tick(deltaTimeMS);
+            GameManager.GetInstance().gameModules.Tick(deltaTimeMS);
 
             foreach(var val in tickedPages.Values)
             {
@@ -52,6 +57,8 @@ namespace Game
         static int moduleOrderID = 0;
 
         public int tickCount;
+
+        public GameModules gameModules = new GameModules();
 
         public override void Awake()
         {
@@ -83,8 +90,8 @@ namespace Game
             //taParam.Add("last_login_time", DateTime.Now);
             //ThirdPartTA.UserSet(taParam);
 
-            LogWarp.Log("LoadingMgr.Inst.isRunning = true");
-            LoadingMgr.Inst.isRunning = true;
+            LogWarp.Log("GameRoot.isRunning = true");
+            GameRoot.GetInstance().isRunning = true;
         }
 
         public void Update()
@@ -96,6 +103,7 @@ namespace Game
         public void Init()
         {
             MessageManager.GetInstance().SetCallbackNotFoundMessage(this.OnNotFoundMessage);
+            MessageManager.GetInstance().Regist((int)GameMessageDefine.LoadSceneFinished, OnLoadSceneFinished);
             MessageManager.GetInstance().Regist((int)GameMessageDefine.UIMessage_AddToTick, OnUIMessage_AddToTick);
             MessageManager.GetInstance().Regist((int)GameMessageDefine.UIMessage_RemoveFromTick, OnUIMessage_RemoveFromTick);
 
@@ -113,11 +121,11 @@ namespace Game
 #if UNITY_EDITOR
             tickCount = 0;
 #endif
+            MessageManager.GetInstance().Regist((int)GameMessageDefine.LoadSceneFinished, OnLoadSceneFinished);
             MessageManager.GetInstance().UnRegist((int)GameMessageDefine.UIMessage_AddToTick, OnUIMessage_AddToTick);
             MessageManager.GetInstance().UnRegist((int)GameMessageDefine.UIMessage_RemoveFromTick, OnUIMessage_RemoveFromTick);
 
             UnLoadModule();
-            //tickObj.tickedPages.Clear();
             RemoveAllTickPage();
             this.Stop();
         }
@@ -158,52 +166,15 @@ namespace Game
             tickObj.tickedPages.Remove(pageName);
         }
 
-        public void LoadSceneModule()
+        public void LoadModule()
         {
-            ////
-            ////玩家数据维护
-            //GameModuleManager.GetInstance().AddMoudle(new PlayerDataModule(moduleOrderID++));
-            ////动物数据维护
-            ////GameModuleManager.GetInstance().AddMoudle(new AnimalModule(moduleOrderID++));
+            //gameModules.AddMoudle()
 
-            ////生成
-            //GameModuleManager.GetInstance().AddMoudle(new ParkingCenter(moduleOrderID++));
-            //GameModuleManager.GetInstance().AddMoudle(new SpawnModule(moduleOrderID++));
-
-            ////决策模块
-            ////大门
-            //GameModuleManager.GetInstance().AddMoudle(new EntryGateModule(moduleOrderID++));
-
-            ////动物栏
-            //GameModuleManager.GetInstance().AddMoudle(new LittleZooModule(moduleOrderID++));
-
-            ////Buff
-            //GameModuleManager.GetInstance().AddMoudle(new BuffModule(moduleOrderID++));
-
-            ////道具
-            //GameModuleManager.GetInstance().AddMoudle(new ItemModule(moduleOrderID++));
-
-            ////移动
-            //GameModuleManager.GetInstance().AddMoudle(new MoveMovableEntityMoudle(moduleOrderID++));
-
-            ////世界地图
-            //GameModuleManager.GetInstance().AddMoudle(new WordlMapModule(moduleOrderID++));
-
-            ////引导任务
-            //GameModuleManager.GetInstance().AddMoudle(new GuideMissionModule(moduleOrderID++));
-
-            ////杂项模块
-            //GameModuleManager.GetInstance().AddMoudle(new MiscModule(moduleOrderID++));
-
-            ////图鉴收集模块
-            //GameModuleManager.GetInstance().AddMoudle(new AnimalAtlasModule(moduleOrderID++));
-
-            GameModuleManager.GetInstance().Stop();
         }
 
         public void UnLoadModule()
         {
-            GameModuleManager.GetInstance().Release();
+            gameModules.Release();
         }
 
         public void RemoveAllTickPage()
@@ -216,11 +187,10 @@ namespace Game
             GlobalDataManager.GetInstance().Init();
         }
 
-        protected void OnLoadZooSceneFinished(Message msg)
+        protected void OnLoadSceneFinished(Message msg)
         {
-            LoadSceneModule();
-            GameModuleManager.GetInstance().Run();
-
+            LoadModule();
+            gameModules.Run();
         }
 
         protected void OnUIMessage_AddToTick(Message msg)

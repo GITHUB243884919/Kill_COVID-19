@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace UFrame
+namespace HillUFrame
 {
 	/// <summary>
 	/// This script moves the attached object along the Y-axis with the defined speed

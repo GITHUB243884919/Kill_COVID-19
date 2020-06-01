@@ -14,9 +14,9 @@ using System.Text;
 using LitJson;
 using UnityEditor.SceneManagement;
 using System.Collections.Generic;
-using UFrame.Logger;
+using HillUFrame.Logger;
 
-namespace UFrame.Path.StraightLine
+namespace HillUFrame.Path.StraightLine
 {
     [CustomEditor(typeof(ShowPathLines))]
     public class ShowPathLinesEditor : Editor

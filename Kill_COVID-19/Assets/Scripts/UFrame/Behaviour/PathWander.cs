@@ -1,10 +1,10 @@
-﻿using UFrame.Logger;
+﻿using HillUFrame.Logger;
 using System.Collections;
 using System.Collections.Generic;
-using UFrame.EntityFloat;
+using HillUFrame.EntityFloat;
 using UnityEngine;
 
-namespace UFrame.BehaviourFloat
+namespace HillUFrame.BehaviourFloat
 {
     public class PathWander : BehaviourBase
     {

@@ -10,7 +10,7 @@
 
 using System.Collections.Generic;
 
-namespace UFrame
+namespace HillUFrame
 {
     public class FSMMachine : TickBase
     {

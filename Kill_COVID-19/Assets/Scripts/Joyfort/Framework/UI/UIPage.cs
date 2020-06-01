@@ -19,9 +19,9 @@ using DG.Tweening.Core;
 //using UFrame.MiniGame;
 using UnityEngine.EventSystems;
 using Game.GlobalData;
-using UFrame;
+using HillUFrame;
 //using Game;
-using UFrame.Logger;
+using HillUFrame.Logger;
 using Game.MessageCenter;
 using UnityEngine.Events;
 

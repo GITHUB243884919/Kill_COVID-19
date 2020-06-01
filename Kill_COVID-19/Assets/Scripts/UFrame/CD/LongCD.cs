@@ -11,7 +11,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace UFrame
+namespace HillUFrame
 {
     public class LongCD : TickBase
     {

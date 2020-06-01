@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 using UnityEngine.UI;
-using UFrame;
+using HillUFrame;
 
 public class UIWaitAd : UIPage {
 	public static bool isWaitLoadingAd = false;

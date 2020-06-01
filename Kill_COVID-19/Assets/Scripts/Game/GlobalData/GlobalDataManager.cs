@@ -7,12 +7,12 @@
 ********************************************************************/
 
 
-using UFrame.Logger;
+using HillUFrame.Logger;
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using UFrame;
-using UFrame.Common;
+using HillUFrame;
+using HillUFrame.Common;
 using UnityEngine;
 
 namespace Game.GlobalData
@@ -24,6 +24,15 @@ namespace Game.GlobalData
         public I18N i18n { get; protected set; }
 
         public PlayerData playerData = null;
+
+        /// <summary>
+        /// 玩家
+        /// </summary>
+        public Transform transPlayer = null;
+
+        public Vector3 spawnLeftTop;
+
+        public Vector3 spawnRightBottom;
 
         public void Init()
         {

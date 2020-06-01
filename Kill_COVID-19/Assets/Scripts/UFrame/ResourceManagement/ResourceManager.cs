@@ -6,13 +6,16 @@
 * other:    
 ********************************************************************/
 
+using System;
 using System.Collections;
 using System.Collections.Generic;
-using UFrame.Common;
+using HillUFrame.Common;
 using UnityEngine;
 using UnityEngine.Networking;
+using UnityEngine.SceneManagement;
+using Object = UnityEngine.Object;
 
-namespace UFrame.MiniGame
+namespace HillUFrame.MiniGame
 {
     public class ResourceManager : Singleton<ResourceManager>, ISingleton
     {
@@ -128,7 +131,7 @@ namespace UFrame.MiniGame
             callback?.Invoke(request.asset);
         }
 
-        protected IEnumerator CoWaitAsync(int pathHash, System.Action<Object> callback)
+        protected IEnumerator CoWaitAsync(int pathHash, Action<Object> callback)
         {
             Object obj = null;
             while(true)
@@ -142,6 +145,42 @@ namespace UFrame.MiniGame
             }
 
             callback?.Invoke(obj);
+        }
+
+        public void LoadSceneAsync(string sceneName, Action callback, Action<float> progress = null)
+        {
+            RunCoroutine.Run(ILoadSceneAsync(sceneName, callback, progress));
+        }
+
+        private IEnumerator ILoadSceneAsync(string sceneName, Action callback, Action<float> progress = null)
+        {
+            AsyncOperation async = SceneManager.LoadSceneAsync(sceneName);
+            float progressValue = 0f;
+            while (!async.isDone)
+            {
+                if (progress != null)
+                {
+                    progressValue = async.progress;
+                    progress.Invoke(progressValue);
+                }
+                yield return null;
+            }
+
+            callback?.Invoke();
+        }
+
+        public string CurAcitveSceneName {
+            get {
+                return SceneManager.GetActiveScene().name;
+            }
+        }
+
+
+
+        public void RemoveScene(string sceneNmae)
+        {
+            SceneManager.UnloadSceneAsync(sceneNmae);
+            //StartCoroutine(CoUnloadSceneAsync(sceneNmae));
         }
 
     }

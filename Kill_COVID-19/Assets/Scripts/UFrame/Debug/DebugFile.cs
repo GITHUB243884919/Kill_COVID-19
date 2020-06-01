@@ -13,10 +13,10 @@ using System.Diagnostics;
 using System.IO;
 using System.Text;
 using UnityEngine;
-using UFrame.Common;
-using UFrame.Logger;
+using HillUFrame.Common;
+using HillUFrame.Logger;
 
-namespace UFrame
+namespace HillUFrame
 {
     public class DebugFile : Singleton<DebugFile>, ISingleton
     {

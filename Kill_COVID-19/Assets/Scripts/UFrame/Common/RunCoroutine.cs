@@ -11,7 +11,7 @@ using UnityEngine;
 using System.Collections;
 
 
-namespace UFrame.Common
+namespace HillUFrame.Common
 {
     public class RunCoroutine : SingletonMonoSelfAdd<RunCoroutine>
     {

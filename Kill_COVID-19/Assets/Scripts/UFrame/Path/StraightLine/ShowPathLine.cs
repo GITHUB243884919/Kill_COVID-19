@@ -10,7 +10,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace UFrame.Path.StraightLine
+namespace HillUFrame.Path.StraightLine
 {
     [ExecuteInEditMode]
     public class ShowPathLine : MonoBehaviour

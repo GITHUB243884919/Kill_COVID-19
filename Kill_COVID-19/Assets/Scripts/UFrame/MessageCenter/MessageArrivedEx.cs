@@ -1,7 +1,7 @@
-﻿using UFrame.MessageCenter;
-using UFrame.BehaviourFloat;
+﻿using HillUFrame.MessageCenter;
+using HillUFrame.BehaviourFloat;
 
-namespace UFrame
+namespace HillUFrame
 {
     public class MessageArrivedEx : Message
     {

@@ -7,7 +7,7 @@
 ********************************************************************/
 
 
-namespace UFrame
+namespace HillUFrame
 {
     public abstract class TickBase
     {

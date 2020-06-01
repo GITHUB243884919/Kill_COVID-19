@@ -9,7 +9,7 @@
 
 using UnityEngine;
 
-namespace UFrame.EntityFloat
+namespace HillUFrame.EntityFloat
 {
     public class EntityGameObject : Entity
     {

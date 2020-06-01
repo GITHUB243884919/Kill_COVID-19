@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
 using Game.GlobalData;
-using UFrame.MiniGame;
+using HillUFrame.MiniGame;
 using UniRx;
 using UnityEngine;
 using UnityEngine.UI;

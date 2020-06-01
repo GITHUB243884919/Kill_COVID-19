@@ -1,16 +1,16 @@
 ﻿using Game;
 using Game.GlobalData;
 using Game.MessageCenter;
-using UFrame.Logger;
+using HillUFrame.Logger;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Numerics;
-using UFrame;
-using UFrame.MessageCenter;
+using HillUFrame;
+using HillUFrame.MessageCenter;
 using UnityEngine;
 using UnityEngine.UI;
-using UFrame.MiniGame;
+using HillUFrame.MiniGame;
 
 public class UIShowException : UIPage
 {

@@ -14,7 +14,7 @@ using System.Text;
 using UnityEditor.SceneManagement;
 using LitJson;
 
-namespace UFrame.Path.StraightLine
+namespace HillUFrame.Path.StraightLine
 {
     public class PathEditor : Editor
     {

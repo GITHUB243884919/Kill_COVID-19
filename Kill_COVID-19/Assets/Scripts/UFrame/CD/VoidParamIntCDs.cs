@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace UFrame
+namespace HillUFrame
 {
     public interface IVoidParam
     {

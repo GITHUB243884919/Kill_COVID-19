@@ -10,7 +10,7 @@
 using UnityEngine;
 using UnityEditor;
 
-namespace UFrame.Path.StraightLine
+namespace HillUFrame.Path.StraightLine
 {
     [CustomEditor(typeof(ShowPathLine))]
     public class ShowPathLineEditor : Editor

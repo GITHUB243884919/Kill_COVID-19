@@ -4,7 +4,7 @@
 /// This script attaches to ‘Background’ object, and would move it up if the object went down below the viewport border. 
 /// This script is used for creating the effect of infinite movement. 
 /// </summary>
-namespace UFrame
+namespace HillUFrame
 {
 	public class UFrameRepeatingBackground : MonoBehaviour
 	{
@@ -54,7 +54,7 @@ namespace UFrame
 		Vector3 GetScreenPointInGround(Vector3 pos)
 		{
 			Ray ray = Camera.main.ScreenPointToRay(pos);
-			Vector3 groundPoint = UFrame.Math_F.GetIntersectWithLineAndGround(ray.origin, ray.direction);
+			Vector3 groundPoint = HillUFrame.Math_F.GetIntersectWithLineAndGround(ray.origin, ray.direction);
 #if UNITY_EDITOR
 			GameObject.CreatePrimitive(PrimitiveType.Capsule).transform.position = groundPoint;
 #endif

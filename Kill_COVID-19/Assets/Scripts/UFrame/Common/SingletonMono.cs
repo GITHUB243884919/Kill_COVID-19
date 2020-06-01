@@ -7,7 +7,7 @@
 ********************************************************************/
 
 
-namespace UFrame.Common
+namespace HillUFrame.Common
 {
     public class SingletonMono<T> : UnityEngine.MonoBehaviour
         where T : UnityEngine.MonoBehaviour

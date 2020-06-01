@@ -7,10 +7,10 @@
 ********************************************************************/
 
 
-using UFrame.MessageCenter;
-using UFrame.BehaviourFloat;
+using HillUFrame.MessageCenter;
+using HillUFrame.BehaviourFloat;
 
-namespace UFrame
+namespace HillUFrame
 {
 
     public enum UFrameBuildinMessage
@@ -45,7 +45,7 @@ namespace UFrame
     }
 }
 
-namespace UFrame
+namespace HillUFrame
 {
     public class MessageString : Message
     {
